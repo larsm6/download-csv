@@ -33,7 +33,7 @@ yarn add https://github.com/ayush-shta/download-csv.git;
 
 This package includes one function: 
 
-`downloadCSV(data, headers, fileName, separator, enclosingCharacter);`
+`downloadCSV(data, headers, fileName);`
 
 ## Parameters:
 
@@ -60,7 +60,9 @@ data = [
 **Example of array of literal objects**
 
 ```js
-// Array of literal objects. Each item is rendered as CSV line however the order of fields will be defined by the headers props. If the headers props are not defined, the component will generate headers from each data item.
+// Array of literal objects. 
+// Each item is rendered as CSV line however the order of fields will be defined by the headers props. 
+// If the headers props are not defined, the component will generate headers from each data item.
 data = [
   { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
   { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
@@ -140,12 +142,4 @@ Note: if at any point the nested keys passed do not exist then looks for key wit
 ### - **fileName (optional)**:
 
 String to specify the filename of the csv file to download.
-
-### - **separator (optional)**:
-
-You can pass separator parameter which is equals by default a comma `,`.
-
-### - **enclosingCharacter (optional)**:
-
-You can pass an `enclosingCharacter` prop which defaults to `"`.
 
