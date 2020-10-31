@@ -1,10 +1,6 @@
 import { buildURI } from "./core";
 
-export const downloadCSV = (
-  data,
-  headers,
-  fileName = "Csv Report"
-) => {
+export const downloadCSV = (data, headers, fileName = "Csv Report") => {
   const fileNameWithExtension = fileName + ".csv";
   const url = buildURI(data, headers);
 

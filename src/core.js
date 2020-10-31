@@ -1,24 +1,24 @@
 /**
  * Simple safari detection based on user agent test
  */
-export const isSafari = () =>
+const isSafari = () =>
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-export const isJsons = array =>
+const isJsons = array =>
   Array.isArray(array) &&
   array.every(row => typeof row === "object" && !(row instanceof Array));
 
-export const isArrays = array =>
+const isArrays = array =>
   Array.isArray(array) && array.every(row => Array.isArray(row));
 
-export const jsonsHeaders = array =>
+const jsonsHeaders = array =>
   Array.from(
     array
       .map(json => Object.keys(json))
       .reduce((a, b) => new Set([...a, ...b]), [])
   );
 
-export const jsons2arrays = (jsons, headers) => {
+const jsons2arrays = (jsons, headers) => {
   headers = headers || jsonsHeaders(jsons);
 
   // allow headers to have custom labels, defaulting to having the header data key be the label
@@ -35,7 +35,7 @@ export const jsons2arrays = (jsons, headers) => {
   return [headerLabels, ...data];
 };
 
-export const getHeaderValue = (property, obj) => {
+const getHeaderValue = (property, obj) => {
   const foundValue = property
     .replace(/\[([^\]]+)]/g, ".$1")
     .split(".")
@@ -58,7 +58,7 @@ export const getHeaderValue = (property, obj) => {
 
 const elementOrEmpty = element => (element || element === 0 ? element : "");
 
-export const joiner = data => {
+const joiner = data => {
   const separator = ",";
   const enclosingCharacter = '"';
 
@@ -73,15 +73,15 @@ export const joiner = data => {
     .join(`\n`);
 };
 
-export const arrays2csv = (data, headers) =>
+const arrays2csv = (data, headers) =>
   joiner(headers ? [headers, ...data] : data);
 
-export const jsons2csv = (data, headers) => joiner(jsons2arrays(data, headers));
+const jsons2csv = (data, headers) => joiner(jsons2arrays(data, headers));
 
-export const string2csv = (data, headers) =>
+const string2csv = (data, headers) =>
   headers ? `${headers.join()}\n${data}` : data;
 
-export const toCSV = (data, headers) => {
+const toCSV = (data, headers) => {
   if (isJsons(data)) return jsons2csv(data, headers);
   if (isArrays(data)) return arrays2csv(data, headers);
   if (typeof data === "string") return string2csv(data, headers);
