@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ayush-shta/react-csv.git"
+    "url": "git+https://github.com/ayush-shta/download-csv.git"
   },
   "keywords": [
     "csv",
