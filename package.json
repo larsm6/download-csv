@@ -1,11 +1,10 @@
 {
   "name": "download-csv",
   "version": "1.0.0",
-  "description": "Build CSV files on the fly basing on Array/literal object of data ",
-  "main": "index.js",
+  "description": "Build CSV files on the fly basing on Array/literal object of data",
+  "main": "src/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/ --no-comments"
   },
   "repository": {
     "type": "git",
@@ -19,21 +18,5 @@
     "download"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.18.2",
-    "babel-istanbul": "^0.12.2",
-    "babel-loader": "^6.2.8",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "browserify": "^13.3.0",
-    "documentation": "^4.0.0-rc.1",
-    "expect": "^1.20.2",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-dev-server": "^3.1.11",
-    "webpack-hot-middleware": "^2.13.2"
-  }
+  "devDependencies": {}
 }
