@@ -104,7 +104,7 @@ export const buildURI = (data, headers, config = {
   separator: ",",
   enclosingCharacter:'"'
 }) => {
-  const csv = toCSV(data, headers);
+  const csv = toCSV(data, headers, config);
   const type = isSafari() ? "application/csv" : "text/csv";
   const blob = new Blob(["", csv], { type });
   const dataURI = `data:${type};charset=utf-8,${""}${csv}`;
