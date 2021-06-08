@@ -1,8 +1,16 @@
 import { buildURI } from "./core";
 
-export const downloadCSV = (data, headers, fileName = "Csv Report") => {
-  const fileNameWithExtension = fileName + ".csv";
-  const url = buildURI(data, headers);
+export const downloadCSV = (data, config={
+  headers?,
+  separator: ',',
+  enclosingCharacter: '"',
+  fileName:"Csv Report",
+}) => {
+  const fileNameWithExtension = config.fileName + ".csv";
+  const url = buildURI(data, headers, {
+    seperator: config.separator,
+    enclosingCharacter: config.enclosingCharacter
+  });
 
   const link = document.createElement("a");
   link.href = url;

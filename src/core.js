@@ -58,39 +58,52 @@ const getHeaderValue = (property, obj) => {
 
 const elementOrEmpty = element => (element || element === 0 ? element : "");
 
-const joiner = data => {
-  const separator = ",";
-  const enclosingCharacter = '"';
+const joiner = (data, config = {
+  separator: ",",
+  enclosingCharacter:'"'
+}) => {
 
   return data
     .filter(e => e)
     .map(row =>
       row
         .map(element => elementOrEmpty(element))
-        .map(column => `${enclosingCharacter}${column}${enclosingCharacter}`)
-        .join(separator)
+        .map(column => `${config.enclosingCharacter}${column}${config.enclosingCharacter}`)
+        .join(config.separator)
     )
     .join(`\n`);
 };
 
-const arrays2csv = (data, headers) =>
-  joiner(headers ? [headers, ...data] : data);
+const arrays2csv = (data, headers, config = {
+  separator: ",",
+  enclosingCharacter:'"'
+}) =>
+  joiner(headers ? [headers, ...data] : data, config);
 
-const jsons2csv = (data, headers) => joiner(jsons2arrays(data, headers));
+const jsons2csv = (data, headers) => joiner(jsons2arrays(data, headers), config = {
+  separator: ",",
+  enclosingCharacter:'"'
+});
 
 const string2csv = (data, headers) =>
   headers ? `${headers.join()}\n${data}` : data;
 
-const toCSV = (data, headers) => {
-  if (isJsons(data)) return jsons2csv(data, headers);
-  if (isArrays(data)) return arrays2csv(data, headers);
+const toCSV = (data, headers, config = {
+  separator: ",",
+  enclosingCharacter:'"'
+}) => {
+  if (isJsons(data)) return jsons2csv(data, headers, config);
+  if (isArrays(data)) return arrays2csv(data, headers, config);
   if (typeof data === "string") return string2csv(data, headers);
   throw new TypeError(
     `Data should be a "String", "Array of arrays" OR "Array of objects" `
   );
 };
 
-export const buildURI = (data, headers) => {
+export const buildURI = (data, headers, config = {
+  separator: ",",
+  enclosingCharacter:'"'
+}) => {
   const csv = toCSV(data, headers);
   const type = isSafari() ? "application/csv" : "text/csv";
   const blob = new Blob(["", csv], { type });
