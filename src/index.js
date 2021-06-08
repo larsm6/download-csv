@@ -1,7 +1,7 @@
 import { buildURI } from "./core";
 
 export const downloadCSV = (data, config={
-  headers?,
+  headers: [],
   separator: ',',
   enclosingCharacter: '"',
   fileName:"Csv Report",
