@@ -4,11 +4,10 @@
   "description": "Build CSV files on the fly basing on Array/literal object of data",
   "main": "src/index.js",
   "jsnext:main": "src/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ayush-shta/download-csv.git"
+    "url": "git+https://github.com/larsm6/download-csv.git"
   },
   "keywords": [
     "csv",
