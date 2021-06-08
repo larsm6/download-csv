@@ -1,11 +1,13 @@
 import { buildURI } from "./core";
 
-export const downloadCSV = (data, config={
-  headers: [],
-  separator: ',',
-  enclosingCharacter: '"',
-  fileName:"Csv Report",
-}) => {
+export const downloadCSV = (data, _config) => {
+  const config = {
+    headers: [],
+    separator: ',',
+    enclosingCharacter: '"',
+    fileName:"Csv Report",
+    ..._config
+  };
   const fileNameWithExtension = config.fileName + ".csv";
   const url = buildURI(data, config.headers, {
     seperator: config.separator,
