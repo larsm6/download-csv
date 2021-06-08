@@ -7,7 +7,7 @@ export const downloadCSV = (data, config={
   fileName:"Csv Report",
 }) => {
   const fileNameWithExtension = config.fileName + ".csv";
-  const url = buildURI(data, headers, {
+  const url = buildURI(data, config.headers, {
     seperator: config.separator,
     enclosingCharacter: config.enclosingCharacter
   });
